@@ -191,7 +191,7 @@ return false;
 //
 //  PRIVATE
 //
-size_t RS485_HD::write(uint8_t c)
+size_t RS485::write(uint8_t c)
 {
   digitalWrite(_sendPin, HIGH);   //  transmit mode
   size_t n = _stream->write(c);
@@ -202,7 +202,7 @@ size_t RS485_HD::write(uint8_t c)
 
 
 //  TODO: fix blocking - yield()?
-size_t RS485_HD::write(uint8_t * array, uint8_t length)
+size_t RS485::write(uint8_t * array, uint8_t length)
 {
   digitalWrite(_sendPin, HIGH);   //  transmit mode
   size_t n = _stream->write(array, length);
