@@ -53,7 +53,6 @@ void RS485::setMicrosPerByte(uint32_t baudRate)
 {
   // count 11 bits / byte
   _microsPerByte = (11 * 1000000UL) / baudRate;
-  return _microsPerByte;
 }
 
 
