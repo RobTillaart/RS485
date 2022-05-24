@@ -64,6 +64,7 @@ resumes with listening.
 ## Future
 
 - improve documentation
+- setUsPerByte() parameter does not feel 100%
 - add **send()** and **receive()** for longer messages.
   - which handshake?
   - dynamic buffer size?

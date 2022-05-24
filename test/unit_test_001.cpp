@@ -75,7 +75,7 @@ unittest(test_microsPerByte)
 
   master.setMicrosPerByte(115200);
   // count 11 bits / byte
-  uint32_t us = (11 * 100000UL) / 115200;
+  uint32_t us = (11 * 1000000UL) / 115200;
   assertEqual(us, master.getMicrosPerByte());
 }
 
