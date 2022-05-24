@@ -64,6 +64,9 @@ unittest(test_constructor)
 unittest(test_microsPerByte)
 {
   Serial.begin(115200);
+
+  const uint8_t sendPin  = 4;
+
   RS485 master(&Serial, sendPin);
   assertEqual(0, master.getDeviceID());
 
