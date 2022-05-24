@@ -28,11 +28,13 @@ public:
   uint8_t  getDeviceID()      { return _deviceID; };
 
 
-  //  Stream interface
-  int  available();
-  int  read();
-  int  peek();
-  void flush();
+  //     Stream interface
+  int    available();
+  int    read();
+  int    peek();
+  void   flush();
+  size_t write(uint8_t c);
+  size_t write(uint8_t * array, uint8_t length);
 
 
   //  TODO TEST 0.3.0
@@ -45,8 +47,7 @@ private:
   uint8_t  _deviceID      = 0;
   uint16_t _microsPerByte = 1000;
 
-  size_t write(uint8_t c);
-  size_t write(uint8_t * array, uint8_t length);
+
 
   //  TODO TEST
   //  uint8_t _bidx = 0;

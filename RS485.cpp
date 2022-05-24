@@ -48,6 +48,25 @@ void RS485::flush()
   _stream->flush();
 }
 
+size_t RS485::write(uint8_t c)
+{
+  digitalWrite(_sendPin, HIGH);   //  transmit mode
+  size_t n = _stream->write(c);
+  delayMicroseconds(_microsPerByte);
+  digitalWrite(_sendPin, LOW);    //  receiver mode
+  return n;
+}
+
+//  TODO: fix blocking - yield() - merge above
+size_t RS485::write(uint8_t * array, uint8_t length)
+{
+  digitalWrite(_sendPin, HIGH);   //  transmit mode
+  size_t n = _stream->write(array, length);
+  delayMicroseconds(_microsPerByte);
+  digitalWrite(_sendPin, LOW);    //  receiver mode
+  return n;
+}
+
 
 void RS485::setMicrosPerByte(uint32_t baudRate)
 {
@@ -191,25 +210,7 @@ return false;
 //
 //  PRIVATE
 //
-size_t RS485::write(uint8_t c)
-{
-  digitalWrite(_sendPin, HIGH);   //  transmit mode
-  size_t n = _stream->write(c);
-  delayMicroseconds(_microsPerByte);
-  digitalWrite(_sendPin, LOW);    //  receiver mode
-  return n;
-}
 
-
-//  TODO: fix blocking - yield()?
-size_t RS485::write(uint8_t * array, uint8_t length)
-{
-  digitalWrite(_sendPin, HIGH);   //  transmit mode
-  size_t n = _stream->write(array, length);
-  delayMicroseconds(_microsPerByte);
-  digitalWrite(_sendPin, LOW);    //  receiver mode
-  return n;
-}
 
 // -- END OF FILE --
 
