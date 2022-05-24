@@ -17,7 +17,7 @@
 // - a stream - SWserial of HW serial (preferred)
 // - a pin for TX- enable line
 // - slave ID, or 0 as master (or don't care)
-RS485::RS485(Stream * str, uint8_t sendPin, uint8_t deviceID)
+RS485::RS485(Stream * stream, uint8_t sendPin, uint8_t deviceID)
 {
   _stream   = stream;
   _sendPin  = sendPin;
