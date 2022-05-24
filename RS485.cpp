@@ -195,7 +195,7 @@ size_t RS485::write(uint8_t c)
 {
   digitalWrite(_sendPin, HIGH);   //  transmit mode
   size_t n = _stream->write(c);
-  delayMicroseconds(_usPerByte);
+  delayMicroseconds(_microsPerByte);
   digitalWrite(_sendPin, LOW);    //  receiver mode
   return n;
 }
@@ -206,7 +206,7 @@ size_t RS485::write(uint8_t * array, uint8_t length)
 {
   digitalWrite(_sendPin, HIGH);   //  transmit mode
   size_t n = _stream->write(array, length);
-  delayMicroseconds(_usPerByte);
+  delayMicroseconds(_microsPerByte);
   digitalWrite(_sendPin, LOW);    //  receiver mode
   return n;
 }
