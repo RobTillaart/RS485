@@ -54,10 +54,10 @@ unittest(test_constructor)
   const uint8_t deviceID = 1;
   RS485 rs485(&Serial, sendPin, deviceID);
 
-  assertEqual(1, rs485.getDeviceID);
+  assertEqual(1, rs485.getDeviceID());
   
   RS485 master(&Serial, sendPin);
-  assertEqual(0, master.getDeviceID);
+  assertEqual(0, master.getDeviceID());
 }
 
 
@@ -65,7 +65,7 @@ unittest(test_microsPerByte)
 {
   Serial.begin(115200);
   RS485 master(&Serial, sendPin);
-  assertEqual(0, master.getDeviceID);
+  assertEqual(0, master.getDeviceID());
 
   //  default value
   assertEqual(1000, master.getMicrosPerByte());
