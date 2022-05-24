@@ -28,28 +28,28 @@ RS485::RS485(Stream * stream, uint8_t sendPin, uint8_t deviceID)
 }
 
 
-int RS485_HD::available()
+int RS485::available()
 {
   return _stream->available();
 }
 
-int RS485_HD::read()
+int RS485::read()
 {
   return _stream->read();
 }
 
-int RS485_HD::peek()
+int RS485::peek()
 {
   return _stream->peek();
 }
 
-void RS485_HD::flush()
+void RS485::flush()
 {
   _stream->flush();
 }
 
 
-void RS485_HD::setMicrosPerByte(uint32_t baudRate)
+void RS485::setMicrosPerByte(uint32_t baudRate)
 {
   // count 11 bits / byte
   _microsPerByte = (11 * 1000000UL) / baudRate;
