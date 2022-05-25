@@ -66,9 +66,10 @@ size_t RS485::write(char * array, uint8_t length)
   return write((uint8_t *)array, length);
 }
 
+
 ///////////////////////////////////////////////////////
 //
-//  discussion about write andyield see 
+//  discussion about write and yield see 
 //  - https://github.com/RobTillaart/RS485/issues/2
 //
 
@@ -76,28 +77,22 @@ size_t RS485::write(char * array, uint8_t length)
 
 #ifdef RS485_YIELD_ENABLE
 
+// smallest and slightly fastest.
 size_t RS485::write(uint8_t * array, uint8_t length)
 {
-  //  yield interval.
-  const uint32_t interval = 4000;
-  //  force a quick yield() call
-  uint32_t start = micros() - interval;
-  
   uint8_t n = 0;
   for (uint8_t i = 0; i < length; i++)
   {
     n += write(array[i]);
-    if (micros() - start > interval)
-    {
-      yield();
-      start = micros();
-    }
+    yield();
   }
   return n;
 }
 
-#else  // no yield() calls
+#else  
 
+//  0.2.1 version 
+//  no yield() calls - might be blocking...
 size_t RS485::write(uint8_t * array, uint8_t length)
 {
   setTXmode();    //  transmit mode

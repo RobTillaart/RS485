@@ -82,6 +82,8 @@ or use this flag in the compile line option
 Note: the **yield()** calling version is substantial slower, depending 
 on the baud rate. Use with care.
 
+TODO: to be tested on ESP32 - RTOS .
+
 
 ## Future
 

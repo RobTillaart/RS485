@@ -12,11 +12,11 @@ uint32_t start, stop = 0;
 
 void setup()
 {
-  Serial.begin(9600);
+  Serial.begin(4800);
   while (!Serial);
   // Serial.println(__FILE__);
 
-  test(9600);
+  test(4800);
 }
 
 void loop()

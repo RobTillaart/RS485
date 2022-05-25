@@ -11,7 +11,7 @@
 #include "Arduino.h"
 #include "ASCII_CONTROL.h"
 
-#define RS485_LIB_VERSION "0.2.2"
+#define RS485_LIB_VERSION        (F("0.2.2"))
 
 
 class RS485 : public Stream
