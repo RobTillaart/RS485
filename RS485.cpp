@@ -24,6 +24,37 @@ RS485::RS485(Stream * stream, uint8_t sendPin, uint8_t deviceID)
 }
 
 
+//  0.3.0
+// void RS485::begin(uint32_t baudRate)
+// {
+  // _stream->begin(baudRate);
+  // setMicrosPerByte(baudRate);
+// }
+
+
+void RS485::setMicrosPerByte(uint32_t baudRate)
+{
+  //  count 11 bits time per byte
+  _microsPerByte = (11 * 1000000) / baudRate ;
+}
+
+
+uint32_t RS485::getMicrosPerByte()
+{
+  return _microsPerByte;
+}
+
+
+uint8_t RS485::getDeviceID()
+{
+  return _deviceID;
+}
+
+
+///////////////////////////////////////////////////////
+//
+//  STREAM INTERFACE
+//
 int RS485::available()
 {
   return _stream->available();
@@ -102,13 +133,6 @@ size_t RS485::write(uint8_t * array, uint8_t length)
 #endif
 
 
-void RS485::setMicrosPerByte(uint32_t baudRate)
-{
-  //  count 11 bits / byte
-  _microsPerByte = (11 * 1000000UL) / baudRate;
-}
-
-
 
 ///////////////////////////////////////////////////////
 //
@@ -170,7 +194,6 @@ void RS485::send(uint8_t receiverID, uint8_t msg[], uint8_t len)
 bool RS485::receive(uint8_t &senderID, uint8_t msg[], uint8_t &msglen)
 {
   static uint8_t state  = 0;
-  static uint8_t sender = 255;  //  unknown / anonymous.
   static uint8_t length = 0;
   static bool    forMe  = false;
   static uint8_t CHKSUM = 0;
@@ -204,7 +227,6 @@ bool RS485::receive(uint8_t &senderID, uint8_t msg[], uint8_t &msglen)
 
     //  extract sender
     case 2:
-      sender = v;
       senderID = v;
       state = 3;
       break;

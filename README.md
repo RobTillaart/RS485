@@ -181,6 +181,7 @@ Would allow 127 different 1 byte commands.
   - should be a message class.
   - extract from this lib (for now in the library).
   - dynamic receive buffer size?
+- investigate error handling?
 
 
 #### Could

@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - add **RS485_slave_send_receive.ino** demo
 - add **RS485_sniffer.ino** debug tool
 - update examples.
+- move some code from .h to .cpp
 - update readme.md
 
 

@@ -3,6 +3,8 @@
 // PURPOSE: demo slave of send / receive
 //     URL: https://github.com/RobTillaart/RS485
 
+//  VERY EXPERIMENTAL
+
 //  This is the code for a slave (to be used with master example)
 //  Best is it to use on a MEGA or another board with multiple hardware Serials.
 //  The master should be connected with two slaves
@@ -16,14 +18,16 @@
 
 #include "Arduino.h"
 #include "RS485.h"
-
+#include "SoftwareSerial.h"
 
 const uint8_t sendPin  = 4;
-const uint8_t deviceID = 1;
+const uint8_t deviceID = 2;
+
+SoftwareSerial SWS(6,7);  //  RX, TX
 
 
-//  use a 2nd Serial port.
-RS485 rs485(&Serial, sendPin, deviceID);
+//  use Software Serial
+RS485 rs485(&SWS, sendPin, deviceID);
 
 
 //  for receiving (must be global)
@@ -34,12 +38,14 @@ uint8_t len;
 
 void setup()
 {
-  Serial.begin(9600);
+  Serial.begin(115200);
   while (!Serial);
   Serial.println();
   Serial.println(__FILE__);
 
-  rs485.setMicrosPerByte(9600);
+  SWS.begin(38400);
+  
+  rs485.setMicrosPerByte(38400);
 }
 
 

@@ -19,14 +19,17 @@ class RS485 : public Stream
 public:
   RS485(Stream * stream, uint8_t sendPin, uint8_t deviceID = 0);
 
+  //  sets the baud rate of the stream.
+  //  0.3.0
+  //  void begin(uint32_t baudRate);
 
   //  baudRate must match Serial baudRate
   //  micros are needed before RS485 stream may be reset
   //  to (default) receiving mode.
   void     setMicrosPerByte(uint32_t baudRate);
-  uint32_t getMicrosPerByte() { return _microsPerByte; };
+  uint32_t getMicrosPerByte();
 
-  uint8_t  getDeviceID()      { return _deviceID; };
+  uint8_t  getDeviceID();
 
 
   //      Stream interface
