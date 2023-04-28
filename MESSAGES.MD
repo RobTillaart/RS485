@@ -1,13 +1,19 @@
 
 # Messages
 
-Examples of command/answer protocols.
+Examples of command/answer protocols over RS485.
 (to be elaborated)
+
+This is part of the RS485 class - https://github.com/RobTillaart/RS485
+
 
 #### Guidelines
 
 - Keep protocols as simple as possible.
 - be aware of implications of future expansion.
+- in designing a protocol be aware of ambiguities.
+  An request or answer may contain bytes (sequences) 
+  that might trigger other nodes.
 
 
 #### ASCII codes
@@ -24,6 +30,8 @@ Possible useful char codes.
 |    NAK     |  0x15   |  Not Acknowledge
 |    CAN     |  0x18   |  CANcel
 
+
+See also **ASCII_CONTROL.h**
 
 
 ----
@@ -42,6 +50,7 @@ requirement:
 - All devices listen to a disjunct command set.
 
 
+----
 
 ##  example 2
 
@@ -60,6 +69,8 @@ answer :=
    bytes        requested bytes     (send them back)
 
 
+----
+
 ##  example 3
 
 command and answer have same layout. 
@@ -75,6 +86,8 @@ optional extend with:
    checksum     optional
    EOT          optional (end of transmission)
 
+
+----
 
 ##  example 4
 
