@@ -26,6 +26,30 @@ The 0.2.0 version of the library has no (tested) protocol for multi-byte
 messages so the user must implement such on top of this class.
 
 
+#### Connection schema
+
+```
+         Processor                      MAX485
+    +------------------+            +-------------+
+    |                  |            |             |
+    |              RX  |<-----------|  RO         |
+    |              TX  |----------->|  DI         |
+    |                  |            |             |
+    |                  |       +--->|  RE         |
+    |          sendPin |-------+--->|  DE         |
+    |                  |            |             |
+    |             VCC  |------------|  VCC        |
+    |             GND  |------------|  GND        |
+    |                  |            |             |
+    +------------------+            +-------------+
+   
+    RX = Receive Serial               RO = Receiver Output
+    TX = Transmit Serial              DI = Driver Input
+    sendPin = IO.pin                  RE = Receiver Output Enable
+                                      DE = Driver Output Enable
+```
+
+
 ## Interface
 
 ```cpp
@@ -39,7 +63,8 @@ messages so the user must implement such on top of this class.
 The default device ID is 0 (typically master uses this, or if deviceID is not used).
 The stream is typically Serial, and the baud rate, timeout etc. should be set 
 via the Serial class. 
-The sendPin is the pin that connects to the transmit/receive enable pins.
+The sendPin is the pin that connects to the transmit/receive enable (DE/RE) pins.
+See connection schema above.
 The library sets the pinMode and defaults it to LOW (receiving mode).
 - **void setMicrosPerByte(uint32_t baudRate)** set the delay per character needed.
 This gives the hardware enough time to flush the buffer. 
