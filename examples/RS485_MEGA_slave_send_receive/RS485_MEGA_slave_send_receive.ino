@@ -1,9 +1,7 @@
-//    FILE: RS485_slave_send_receive.ino
+//    FILE: RS485_MEGA_slave_send_receive.ino
 //  AUTHOR: Rob Tillaart
 // PURPOSE: demo slave of send / receive
 //     URL: https://github.com/RobTillaart/RS485
-
-//  VERY EXPERIMENTAL
 
 //  This is the code for a slave (to be used with master example)
 //  Best is it to use on a MEGA or another board with multiple hardware Serials.
@@ -18,16 +16,14 @@
 
 #include "Arduino.h"
 #include "RS485.h"
-#include "SoftwareSerial.h"
+
 
 const uint8_t sendPin  = 4;
 const uint8_t deviceID = 1;
 
-SoftwareSerial SWS(6,7);  //  RX, TX
 
-
-//  use Software Serial
-RS485 rs485(&SWS, sendPin, deviceID);
+//  use a 2nd Serial port.
+RS485 rs485(&Serial2, sendPin, deviceID);
 
 
 //  for receiving (must be global)
@@ -43,8 +39,7 @@ void setup()
   Serial.println();
   Serial.println(__FILE__);
 
-  SWS.begin(38400);
-  
+  Serial2.begin(38400);
   rs485.setMicrosPerByte(38400);
 }
 
@@ -62,16 +57,12 @@ void loop()
       int humidity = 50 + random(10);
       sprintf((char*)buffer, "HUM: %d", humidity);
       rs485.send(ID, buffer, strlen((char*)buffer));
-      //  tidy up output
-      Serial.println();
     }
     if (strcmp((char*)buffer, "Get Temperature") == 0)
     {
       int temperature = 15 + random(10);
       sprintf((char*)buffer, "TEM: %d", temperature);
       rs485.send(ID, buffer, strlen((char*)buffer));
-      //  tidy up output
-      Serial.println();
     }
   }
 }

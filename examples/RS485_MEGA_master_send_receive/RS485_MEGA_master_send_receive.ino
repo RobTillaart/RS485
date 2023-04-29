@@ -1,4 +1,4 @@
-//    FILE: RS485_master_send_receive.ino
+//    FILE: RS485_MEGA_master_send_receive.ino
 //  AUTHOR: Rob Tillaart
 // PURPOSE: demo master of send / receive
 //     URL: https://github.com/RobTillaart/RS485
@@ -23,7 +23,7 @@ const uint8_t deviceID = 0;
 
 
 //  use a 2nd Serial port.
-RS485 rs485(&Serial, sendPin, deviceID);
+RS485 rs485(&Serial2, sendPin, deviceID);
 
 
 //  times of last requests.
@@ -39,11 +39,12 @@ uint8_t len;
 
 void setup()
 {
-  Serial.begin(38400);
+  Serial.begin(115200);
   while (!Serial);
   Serial.println();
   Serial.println(__FILE__);
 
+  Serial2.begin(38400);
   rs485.setMicrosPerByte(38400);
 }
 
@@ -80,4 +81,3 @@ void loop()
 
 
 //  -- END OF FILE --
-

@@ -34,12 +34,12 @@ uint8_t len;
 
 void setup()
 {
-  Serial.begin(9600);
+  Serial.begin(38400);
   while (!Serial);
   Serial.println();
   Serial.println(__FILE__);
 
-  rs485.setMicrosPerByte(9600);
+  rs485.setMicrosPerByte(38400);
 }
 
 
@@ -48,24 +48,20 @@ void loop()
   if (rs485.receive(ID, buffer, len))
   {
     buffer[len] = 0;
-    Serial.print("RECV: ");
-    Serial.println((char*) buffer);
+    //  Serial.print("RECV: ");
+    //  Serial.println((char*) buffer);
 
     if (strcmp((char*)buffer, "Get Humidity") == 0)
     {
       int humidity = 50 + random(10);
       sprintf((char*)buffer, "HUM: %d", humidity);
       rs485.send(ID, buffer, strlen((char*)buffer));
-      //  tidy up output
-      Serial.println();
     }
     if (strcmp((char*)buffer, "Get Temperature") == 0)
     {
       int temperature = 15 + random(10);
       sprintf((char*)buffer, "TEM: %d", temperature);
       rs485.send(ID, buffer, strlen((char*)buffer));
-      //  tidy up output
-      Serial.println();
     }
   }
 }

@@ -281,9 +281,10 @@ bool RS485::receive(uint8_t &senderID, uint8_t msg[], uint8_t &msglen)
         {
           msg[i] = _buffer[i];
         }
+        state = 0;
         return true;
       }
-      state = 0;
+      state = 99;
       break;
 
     //  SKIP until next packet

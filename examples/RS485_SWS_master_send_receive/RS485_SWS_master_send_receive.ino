@@ -65,14 +65,14 @@ void loop()
     Serial.println(msg);
   }
 
-//  if (millis() - lastH >= 5000)
-//  {
-//    lastH = millis();
-//    char msg[] = "Get Humidity";
-//    rs485.send(1, (uint8_t *)msg, strlen(msg));
-//    Serial.print("SEND: ");
-//    Serial.println(msg);
-//  }
+  if (millis() - lastH >= 5000)
+  {
+    lastH = millis();
+    char msg[] = "Get Humidity";
+    rs485.send(1, (uint8_t *)msg, strlen(msg));
+    Serial.print("SEND: ");
+    Serial.println(msg);
+  }
 
   if (rs485.receive(ID, buffer, len))
   {
