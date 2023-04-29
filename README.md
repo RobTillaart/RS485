@@ -207,13 +207,16 @@ Would allow 127 different 1 byte commands.
   - extract from this lib (for now in the library).
   - dynamic receive buffer size?
 - investigate error handling?
+- expand write to other data types?
+- test other platforms
+  - ESP32.
 
 
 #### Could
 
 - setUsPerByte() parameter does not feel 100% (investigate)
-- improve the examples
-  - master, slave, multi slave
+  - rename to begin().
+- improve the examples.
   - add binary protocol example
   - multi-master?
 - add unit tests

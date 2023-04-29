@@ -50,7 +50,6 @@ void loop()
     buffer[len] = 0;
     //  Serial.print("RECV: ");
     //  Serial.println((char*) buffer);
-
     if (strcmp((char*)buffer, "Get Humidity") == 0)
     {
       int humidity = 50 + random(10);
