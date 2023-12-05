@@ -39,8 +39,10 @@ void setup()
   while (!Serial);
   Serial.println();
   Serial.println(__FILE__);
-
-  rs485.setMicrosPerByte(115200);
+  Serial.print("RS485_LIB_VERSION: ");
+  Serial.println(RS485_LIB_VERSION);
+  
+  rs485.begin(115200);
 
   pinMode(LED, OUTPUT);
   digitalWrite(LED, LOW);

@@ -43,9 +43,7 @@ void setup()
   Serial.println();
   Serial.println(__FILE__);
 
-  SWS.begin(38400);
-  
-  rs485.setMicrosPerByte(38400);
+  rs485.begin(38400);
 }
 
 
