@@ -10,7 +10,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Fix #15 - use flush() instead of calculation.
 - remove **setMicrosPerByte()** and **getMicrosPerByte()**
   - not needed any more.
-- add **void begin(uint32_t baudrate)** to set the RS485 baud rate.
 - optimize **write(array, length)** when yield flag is set
 
 ----

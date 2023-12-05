@@ -37,9 +37,11 @@ void loop()
 
 void test(uint32_t baudrate)
 {
+  Serial.begin(baudrate);
+
   delay(10);
   char buffer[64] = "123456789012345678901234567890123456789012345678901234567890";
-  rs485.begin(baudrate);
+
   start = micros();
   rs485.write((uint8_t *)buffer, 60);
   stop = micros();

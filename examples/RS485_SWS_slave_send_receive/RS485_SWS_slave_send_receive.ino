@@ -43,7 +43,7 @@ void setup()
   Serial.println();
   Serial.println(__FILE__);
 
-  rs485.begin(38400);
+  SWS.begin(38400);
 }
 
 

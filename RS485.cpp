@@ -2,7 +2,7 @@
 //    FILE: RS485.cpp
 //  AUTHOR: Rob Tillaart
 //    DATE: 30-okt-2017
-// VERSION: 0.2.7
+// VERSION: 0.3.0
 // PURPOSE: Arduino library for RS485 modules (MAX485)
 //     URL: https://github.com/RobTillaart/RS485
 
@@ -21,13 +21,6 @@ RS485::RS485(Stream * stream, uint8_t sendPin, uint8_t deviceID)
 
   pinMode(_sendPin, OUTPUT);
   setRXmode();    //  receiver mode ==>  _sendPin == LOW
-}
-
-
-//  0.3.0
-void RS485::begin(uint32_t baudRate)
-{
-  _stream->begin(baudRate);
 }
 
 

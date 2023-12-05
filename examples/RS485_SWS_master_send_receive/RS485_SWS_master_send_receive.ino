@@ -50,7 +50,7 @@ void setup()
   Serial.print("RS485_LIB_VERSION: ");
   Serial.println(RS485_LIB_VERSION);
 
-  rs485.begin(38400);
+  SWS.begin(38400);
 }
 
 

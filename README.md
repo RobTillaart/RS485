@@ -77,7 +77,6 @@ via the Serial class.
 The sendPin is the pin that connects to the transmit/receive enable (DE/RE) pins.
 See connection schema above.
 The library sets the pinMode and defaults it to LOW (receiving mode).
-- **void begin(uint32_t baudRate)** set the baud rate of the stream.
 - **void setTXmode()** explicitly set mode to transmitting / sending.
 This implies that the device will stop listening on the RS485 bus.
 - **void setRXmode()** explicitly set mode to receiving / listening.

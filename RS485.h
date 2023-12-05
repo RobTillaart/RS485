@@ -19,10 +19,6 @@ class RS485 : public Stream
 public:
   RS485(Stream * stream, uint8_t sendPin, uint8_t deviceID = 0);
 
-  //  sets the baud rate of the stream.
-  void     begin(uint32_t baudRate);
-
-
   uint8_t  getDeviceID();
 
 
