@@ -57,7 +57,9 @@ messages so the user must implement such on top of this class.
 - https://www.gammon.com.au/forum/?id=11428
 - http://en.wikipedia.org/wiki/RS485
 - https://www.ti.com/lit/an/snla049b/snla049b.pdf - 10 ways to bulletproof your RS485
-- https://github.com/RobTillaart/CRC
+- https://github.com/RobTillaart/Adler - checksum
+- https://github.com/RobTillaart/CRC - checksum
+- https://github.com/RobTillaart/Fletcher - checksum
 - https://www.arduino.cc/reference/en/language/functions/communication/stream/
 
 
