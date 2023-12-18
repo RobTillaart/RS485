@@ -116,12 +116,18 @@ The library functions are:
 - **void send(uint8_t receiverID, uint8_t msg[], uint8_t len)**
   - send a buffer of given length to a receiver.
 - **bool receive(uint8_t &senderID, uint8_t msg[], uint8_t &len)**
+  - receive a packet, senderID identifies the sender.
+
+Two wrappers:
+- **void send(uint8_t receiverID, char msg[], uint8_t len)**
+  - send a buffer of given length to a receiver.
+- **bool receive(uint8_t &senderID, char msg[], uint8_t &len)**
   - receive a packet, senderID identifies the sender. 
 
 Current implementation limits messages up to 48 bytes (hardcoded buffer size)
 which is in many cases enough.
 
-See two example sketches.
+See example sketches.
 
 
 ## Operation
