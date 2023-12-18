@@ -9,6 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.4.0] - 2023-12-18
 - fix **write(array, length)**
 - add two examples (ack_nack + controller)
+- updated experimental protocol, still experimental
+- update readme.md
 - minor edits
 
 ----
