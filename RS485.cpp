@@ -287,7 +287,7 @@ void RS485::send(uint8_t receiverID, char msg[], uint8_t len)
 
 bool RS485::receive(uint8_t &senderID, char msg[], uint8_t &len)
 {
-  receive(senderID, (uint8_t*) msg, len)
+  receive(senderID, (uint8_t*) msg, len);
 }
 
 
