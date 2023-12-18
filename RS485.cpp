@@ -149,25 +149,29 @@ size_t RS485::write(uint8_t * array, uint8_t length)
 //     EOT          end of transmission
 //
 
-void RS485::send(uint8_t receiverID, uint8_t msg[], uint8_t len)
+size_t RS485::send(uint8_t receiverID, uint8_t msg[], uint8_t len)
 {
+  size_t n = 0;
   uint8_t CHKSUM = 0;
+
   setTXmode();                 //  transmit mode
   _stream->write(SOH);
-  _stream->write(receiverID);  //  TO
-  _stream->write(_deviceID);   //  FROM
-  _stream->write(len);         //  LENGTH BODY
-  _stream->write(STX);
+  n += _stream->write(receiverID);  //  TO
+  n += _stream->write(_deviceID);   //  FROM
+  n += _stream->write(len);         //  LENGTH BODY
+  n += _stream->write(STX);
   for (int i = 0; i < len; i++)
   {
-    _stream->write(msg[i]);
+    n += _stream->write(msg[i]);
     CHKSUM ^= msg[i];          //  Simple XOR checksum.
   }
-  _stream->write(CHKSUM);
-  _stream->write(ETX);
-  _stream->write(EOT);
-  _stream->flush();
+  n += _stream->write(CHKSUM);
+  n += _stream->write(ETX);
+  n += _stream->write(EOT);
+  n += _stream->flush();
   setRXmode();                 //  receive mode
+
+  return n;
 }
 
 
@@ -279,15 +283,15 @@ bool RS485::receive(uint8_t &senderID, uint8_t msg[], uint8_t &msglen)
 }
 
 
-void RS485::send(uint8_t receiverID, char msg[], uint8_t len)
+size_t RS485::send(uint8_t receiverID, char msg[], uint8_t len)
 {
-  send(receiverID, (uint8_t *)msg, len);
+  return send(receiverID, (uint8_t *)msg, len);
 }
 
 
 bool RS485::receive(uint8_t &senderID, char msg[], uint8_t &len)
 {
-  receive(senderID, (uint8_t*) msg, len);
+  return receive(senderID, (uint8_t*) msg, len);
 }
 
 
