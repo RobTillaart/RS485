@@ -168,7 +168,7 @@ size_t RS485::send(uint8_t receiverID, uint8_t msg[], uint8_t len)
   n += _stream->write(CHKSUM);
   n += _stream->write(ETX);
   n += _stream->write(EOT);
-  n += _stream->flush();
+  _stream->flush();
   setRXmode();                 //  receive mode
 
   return n;
