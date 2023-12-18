@@ -50,6 +50,10 @@ public:
   void    send(uint8_t receiverID, uint8_t msg[], uint8_t len);
   bool    receive(uint8_t &senderID, uint8_t msg[], uint8_t &len);
 
+  //  EXPERIMENTAL
+  void    send(uint8_t receiverID, char msg[], uint8_t len);
+  bool    receive(uint8_t &senderID, char msg[], uint8_t &len);
+
 
 private:
   Stream   * _stream;
