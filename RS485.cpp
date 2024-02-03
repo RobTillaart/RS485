@@ -2,7 +2,7 @@
 //    FILE: RS485.cpp
 //  AUTHOR: Rob Tillaart
 //    DATE: 30-okt-2017
-// VERSION: 0.4.0
+// VERSION: 0.5.0
 // PURPOSE: Arduino library for RS485 modules (MAX485)
 //     URL: https://github.com/RobTillaart/RS485
 
@@ -130,21 +130,21 @@ size_t RS485::write(uint8_t * array, uint8_t length)
 //    ASCII_EOT      0x04   end of transmission
 //
 //  optional
-//    ASCII_ACK      0x06   ASCII_ACKnowledge
+//    ASCII_ACK      0x06   ACKnowledge
 //    ASCII_NAK      0x15   Not Acknowledge
-//    ASCII_CAN      0x18   ASCII_CANcel
+//    ASCII_CAN      0x18   CANcel
 //
 ///////////////////////////////////////////////////////
 //
 //  A message has the following layout
 //
 //     ASCII_SOH          start of header
-//     deviceID     to
-//     deviceID     sender
-//     length       length of message
+//     deviceID           to
+//     deviceID           sender
+//     length             length of message
 //        ASCII_STX          start of text
-//        message      idem
-//        CHECKSUM     idem, message only!
+//        message            idem
+//        CHECKSUM           idem, message only!
 //        ASCII_ETX          end of text
 //     ASCII_EOT          end of transmission
 //
