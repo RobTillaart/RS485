@@ -223,6 +223,7 @@ Would allow 127 different 1 byte commands.
   - dynamic receive buffer size?
 - investigate error handling?
 - test other platforms
+  - STM32 (see issue 30)
   - ESP32.
 
 #### Could
@@ -232,6 +233,7 @@ Would allow 127 different 1 byte commands.
   - multi-master?
 - add unit tests
 - investigate yield() on ESP32/RTOS behaviour
+- investigate non-blocking version.
 
 #### Wont
 
