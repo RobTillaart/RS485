@@ -47,19 +47,23 @@ public:
   //  send ASCII encoded messages from one master to multiple clients.
   //       msg[] = 32..127
   //       len   =  1.. 48 (internal receive buffer is 50)
-  size_t  send(uint8_t receiverID, uint8_t msg[], uint8_t len);
-  bool    receive(uint8_t &senderID, uint8_t msg[], uint8_t &len);
+  size_t   send(uint8_t receiverID, uint8_t msg[], uint8_t len);
+  bool     receive(uint8_t &senderID, uint8_t msg[], uint8_t &len);
 
   //  EXPERIMENTAL
-  size_t  send(uint8_t receiverID, char msg[], uint8_t len);
-  bool    receive(uint8_t &senderID, char msg[], uint8_t &len);
+  size_t   send(uint8_t receiverID, char msg[], uint8_t len);
+  bool     receive(uint8_t &senderID, char msg[], uint8_t &len);
+
+  //  EXPERIMENTAL
+  void     setMicrosPerByte(uint16_t mpb) { _microsPerByte = mpb; };
+  uint16_t getMicrosPerByte() { return _microsPerByte; };
 
 
 private:
   Stream   * _stream;
   uint8_t  _sendPin       = 0;
   uint8_t  _deviceID      = 0;
-  uint16_t _microsPerByte = 1000;
+  uint16_t _microsPerByte = 1100;
 
   //       EXPERIMENTAL
   uint8_t _bidx = 0;

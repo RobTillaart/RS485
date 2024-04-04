@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
 ## [0.5.1] - 2024-04-04
-- improve flush() to work for STM32
+- improve **flush()** to work for STM32
+- add **void setMicrosPerByte(mpb)** to set delay after flush() for last byte.
+- add **uint16_t getMicrosPerByte()**
 - update GitHub actions
 - minor edits
 

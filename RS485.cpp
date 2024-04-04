@@ -55,9 +55,12 @@ int RS485::peek()
 
 void RS485::flush()
 {
-  // _stream->flush();
+#ifdef ARDUINO_ARCH_STM32
   while (Serial.availableForWrite() < ( SERIAL_TX_BUFFER_SIZE - 1));
-  delay(1);  //  for the last byte.
+#else
+  _stream->flush();
+#endif
+  delayMicroseconds(_microsPerByte);  //  for the last byte.
 }
 
 
