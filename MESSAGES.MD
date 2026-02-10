@@ -50,8 +50,10 @@ See also **ASCII_CONTROL.h**
 
 A minimal message protocol consisting of 1 byte commands
 
+```
 command = (0x80 | 7 bits command)
 answer  = (0x00 | 7 bits answer)*
+```
 
 All command are coded in a single byte with 0x80 bit set.
 All answers bytes 0 or more (sender knows how many to expect, or a specific end char.
@@ -66,7 +68,7 @@ requirement:
 
 Using a device id to send the command to.
 
-
+```
 command :=
 {
    ASCII_SOH    start of header,    (attention new command)
@@ -79,6 +81,7 @@ answer :=
 {
    bytes        requested bytes     (send them back)
 }
+```
 
 ----
 
@@ -87,6 +90,7 @@ answer :=
 Command and answer have same layout.
 Uses device ID's to address specific device.
 
+```
 {
    ASCII_SOH    start of header        0x01
    deviceID     to
@@ -98,6 +102,7 @@ optional extend with:
    checksum     optional
    ASCII_EOT    optional (end of transmission)
 }
+```
 
 ----
 
@@ -106,7 +111,7 @@ optional extend with:
 More complex package with multiple fields and Checksum / CRC per message.
 In fact this is an elaborated variation on previous example.
 
-
+```
    ASCII_SOH    start of header
    deviceID     to
    deviceID     sender
@@ -125,6 +130,7 @@ In fact this is an elaborated variation on previous example.
       ASCII_ETX    end of text
       ...
    ASCII_EOT    end of transmission
+```
 
 ----
 
@@ -134,8 +140,10 @@ Maybe most simple protocol, just send an ID,
 and if the slave is alive it responds with its ID.
 Think of it as the **PING** command
 
+```
 command = ID
 answer  = ID
+```
 
 If the slave is a single function device (light switch) it might just
 toggle upon receiving its ID.
@@ -151,16 +159,18 @@ A **PING** command could be embedded in other protocols too,
 
 Reading a simple slave could be done with a one byte command.
 
+```
 command = ID
 answer  = returns value. //  this should never contain an ID of another device.
-
+```
 An example is remote reading a sensor or an analog port.
 
 To improve the reliability the answer can be a "packet".
 
+```
 command = ID
 answer  = { ASCII_SOH, IDmaster, IDslave, length, value }
-
+```
 
 
 ----
