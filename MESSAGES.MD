@@ -29,6 +29,7 @@ than one iteration.
   that it won't answer or that the answer fails to
   arrive in correct state (missing bytes, flipped bits etc.)
   CRC and other checksums help here
+- Implement time-outs to prevent a master waiting forever for a reply.
 
 ### Notes
 
