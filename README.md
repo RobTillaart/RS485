@@ -85,7 +85,7 @@ via the Serial class.
 The sendPin is the pin that connects to the transmit/receive enable (DE/RE) pins.
 See connection schema above.
 The library sets the pinMode and defaults it to LOW (receiving mode).
-- **getDeviceID()** returns the set deviceID. 
+- **uint8_t getDeviceID()** returns the set deviceID. 
 
 
 ### Mode
