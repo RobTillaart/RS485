@@ -57,8 +57,6 @@ Possible useful character codes.
 See also **ASCII_CONTROL.h**
 
 
-
-
 ## Examples
 
 ### Example 1 - simplest?
